@@ -11,3 +11,4 @@ The intention is to keep the API and the docs in sync, but reduce repetition and
   * OR have DocsController accept a JSON of the spec, bypassing deserialization (how to handle yaml?)
 * A more complex OpenAPI specification, using Optionals, sum types, and maps with non-string keys
   * The third requires OAS 3.1 for patternProperties
+* Non-direct mapping to objects such as Currency, LocalDate
