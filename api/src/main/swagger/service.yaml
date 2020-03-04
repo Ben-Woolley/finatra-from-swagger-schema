@@ -1,0 +1,63 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: An Example Service
+  description: A sample API that can be used for swagger-ui, and generate the model for the service
+  termsOfService: http://woolley.dev
+  contact:
+    name: Ben Woolley
+    url: http://woolley.dev
+  license:
+    name: MIT
+    url: http://opensource.org/licenses/MIT
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /serve:
+    post:
+      description: Serves the response on a valid request
+      operationId: serve
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: X-Debug-Level
+          schema:
+            type: string
+            format: uuid
+        - name: request
+          in: body
+          description: The request to process
+          required: true
+          schema:
+            $ref: '#/definitions/ServiceRequest'
+      responses:
+        '200':
+          description: pet response
+          schema:
+            $ref: '#/definitions/ServiceResponse'
+        default:
+          description: unexpected error
+definitions:
+  ServiceRequest:
+    required:
+      - id
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+        deprecated: true
+        description: superceded by id
+  ServiceResponse:
+    required:
+      - id
+    properties:
+      id:
+        type: integer
+        format: int64
